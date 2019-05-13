@@ -18,6 +18,9 @@ Default Ansible Inventory File :
       uaans
   Here “ABC-APP1-QUT” is group name and “uaans” is a server which is part of that.
   
+Ansible – Command vs Shell vs Raw Modules
+  > Ansible uses modules to complete the task on the remote server
+  
 Commands
   > List all the hosts which are added into the hosts file
     $ ansible all --list-hosts
