@@ -5,6 +5,28 @@ ANSIBLE
   > Ansible uses modules, playbooks (a small piece of YAML code) to perform the specific task on all the ansible clients.
   > Ansible can use in different environments OS, Hypervisor[vmware, libvirt(kvm), RHEV,QEMU(XEN),vagrant], cloud platforms(AWS,
     Google cloud, Microsoft Azure, openstack).
+  > Ansible engine doesn't support it on Windows, Solaris, AIX. But there are no restrictions to participate as ansible clients.
+  > Ansible uses the SSH  protocol to manage the Unix and Linux servers. Windows Servers can be managed by using “WinRM”.
+  
+Validating the localhost by passing ping
+  $ ansible localhost -m ping
+  
+Default Ansible Inventory File : 
+  /etc/ansible/hosts
+  
+  Ex: [ABC-APP1-QUT]
+      uaans
+  Here “ABC-APP1-QUT” is group name and “uaans” is a server which is part of that.
+  
+Commands
+  > List all the hosts which are added into the hosts file
+    $ ansible all --list-hosts
+    
+  > List using the group names
+    $ ansible ABC-APP1-QUT --list-hosts
+    
+  > 
+      
   
   
  
