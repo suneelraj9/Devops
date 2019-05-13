@@ -1,0 +1,11 @@
+ANSIBLE
+********
+  > Ansible required Python to make the use of modules on client machines. 
+  > Ansible also works with a system which doesn’t have python installed using the “raw” module
+  > Ansible uses modules, playbooks (a small piece of YAML code) to perform the specific task on all the ansible clients.
+  > Ansible can use in different environments OS, Hypervisor[vmware, libvirt(kvm), RHEV,QEMU(XEN),vagrant], cloud platforms(AWS,
+    Google cloud, Microsoft Azure, openstack).
+  
+  
+ 
+  
