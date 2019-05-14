@@ -50,6 +50,33 @@ Commands
   > using the “-b” option to gain the elevated access/root access
     $  ansible all -b -a "whoami"
     
+  > Install Apache package using “ad-hoc” command
+    $ ansible all -b -m yum -a "name=httpd state=present"
+    
+  > Create a blank file on the host (uaans69) with a given path using ansible
+    $ ansible uaans69 -m file -a 'path=/var/tmp/ansible_test.txt state=touch'
+    
+  > change the file permission and ownership
+    $ ansible uaans69 -b -m file -a 'path=/var/tmp/ansible_test.txt owner=root group=root mode=0644'
+    
+  > Remove the newly created file and verify by directly logging in to the host
+    $ ansible uaans69 -m file -a 'path=/var/tmp/ansible_test.txt state=absent'
+    
+  > create a soft link on the host
+    $ ansible uaans69 -m file -a 'src=/etc/hosts dest=/var/tmp/hosts state=link'
+    
+  > Create a new directory
+    $ ansible uaans69 -m file -a 'path=/var/tmp/archive state=directory'
+    
+  > ” copy ” Module- Copies files to remote locations
+    $ ansible uaans69 -m copy -a 'src=/etc/hosts dest=/etc/hosts'
+    
+  > Take the backup of any configuration file before editing it
+    $ ansible uaans69 -b -m copy -a 'src=/etc/hosts dest=/etc/hosts backup=yes'
+    
+  > 
+    
+  
   
   
  
