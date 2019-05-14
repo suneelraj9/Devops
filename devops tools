@@ -20,6 +20,16 @@ Default Ansible Inventory File :
   
 Ansible – Command vs Shell vs Raw Modules
   > Ansible uses modules to complete the task on the remote server
+    > command module - default module
+      ex: $ ansible uaans -a "who -r"
+          $ ansible uaans -a "who -r" -o [make the output in single line]
+          
+    > Raw module [if client doesn't install python need to pass raw module]
+      $ ansible uaans69 -m raw -a "who -r"
+      
+    > Shell module [It is very useful when you want to use redirections and shell’s inbuilt functionality]
+      $ ansible -m shell -a "df -h|grep sda2" uaans69
+      
   
 Commands
   > List all the hosts which are added into the hosts file
@@ -28,8 +38,18 @@ Commands
   > List using the group names
     $ ansible ABC-APP1-QUT --list-hosts
     
-  > 
-      
+  > Login to Ansible server and run “uptime” command in ad-hoc mode
+    $ ansible all -a 'uptime'
+    
+  > To align the output in one line, use “-o” option
+    $ ansible all -a 'uptime' -o
+    
+  > Finds the user which is configured with ansible for passwordless authentication
+    $  ansible all -a "whoami"
+    
+  > using the “-b” option to gain the elevated access/root access
+    $  ansible all -b -a "whoami"
+    
   
   
  
