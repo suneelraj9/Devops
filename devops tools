@@ -97,3 +97,35 @@ Playbook ? Play with Tasks & Handlers
   >For package management, we need to gain the root privileges. “become: yes”
    tasks: List of tasks that you would like to perform on the client nodes. You must provide the unique name for each task. 
    In the Second line, we are using “yum” module to install the “httpd” version should be latest and requested to update the cache.
+   
+  > Execute the playbook to deploy Apache on all the list of servers
+    $ ansible-playbook -i lin-servers install_httpd.yaml  [lin-servers file having the server list]
+    
+  > verify work
+    #ansible -i lin-servers all -b -a -m raw 'rpm -qa | grep -i httpd' 
+    
+  > explore writing the playbook
+    ---
+    
+     - hosts: all
+       become:yes
+       
+       tasks:
+        - name: Install the latest version of apache
+          yum: name=httpd version=latest update_cache=yes
+          ignore_errors: yes
+          notify: start apache
+          
+       handlers:
+        - name: start apache
+          service: name=httpd enabled=yes state=sarted
+          
+       > Execute above playbook
+         $ ansible-playbook install_httpd.yaml -i lin-servers.1
+         
+       > verify the work
+         $ ansible -a "systemctl status httpd" -i lin-servers.1  all
+          
+        
+        
+          
