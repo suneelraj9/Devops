@@ -92,3 +92,8 @@ Playbook ? Play with Tasks & Handlers
     tasks:
       - name: Install the latest version of Apache
         yum: name=httpd state=latest update_cache=yes
+        
+  >Playbook should always start with three “–” and follow with mandatory hosts field which starts with “–“.
+  >For package management, we need to gain the root privileges. “become: yes”
+   tasks: List of tasks that you would like to perform on the client nodes. You must provide the unique name for each task. 
+   In the Second line, we are using “yum” module to install the “httpd” version should be latest and requested to update the cache.
