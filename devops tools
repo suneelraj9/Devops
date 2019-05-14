@@ -74,10 +74,21 @@ Commands
   > Take the backup of any configuration file before editing it
     $ ansible uaans69 -b -m copy -a 'src=/etc/hosts dest=/etc/hosts backup=yes'
     
-  > 
+Playbook ? Play with Tasks & Handlers
+**************************************
+> Playbook - It is an orchestration language of Ansible and it’s expressed in YAML format
     
+  > Ansible modules are the tools in your workshop
+  > playbooks are your instruction manuals
+  > YAML (Yet Another Markup Language) is human-readable data serialization language
   
+> Create a new playbook to install “httpd” on Linux servers.
   
-  
- 
-  
+  ---
+
+  - hosts: all
+    become: yes
+
+    tasks:
+      - name: Install the latest version of Apache
+        yum: name=httpd state=latest update_cache=yes
