@@ -127,5 +127,31 @@ Playbook ? Play with Tasks & Handlers
          $ ansible -a "systemctl status httpd" -i lin-servers.1  all
           
         
-        
-          
+Gather facts on Remote Server
+*****************************
+“setup” module is responsible to gather facts of the remote hosts.
+
+> To get the facts of the remote hosts, use the following command
+  $ ansible -m  setup -i lin-servers.1 all 
+  
+> Run the remote facts on the specific hosts from the inventory, use the following command
+  $ ansible -m  setup -i lin-servers.1 gpfslinapp1
+  
+  > “setup” Module – Use Filter in Adhoc Mode 
+  
+    > To list the mount system facts of specific host 
+    $ ansible -m  setup -i lin-servers.1 gpfslinapp1 -a 'filter=ansible_mounts'
+    
+    > To filter the remote host’s OS distribution, use the following ansible variable
+    $ansible -m setup -i lin-servers.1 <hostname> -a 'filter=ansible_distribution'
+    
+    > To list out the kernel version facts of the servers
+    $ansible -m setup -i lin_servers.1 -a 'filter=ansible_kernel' -o
+    
+    
+    
+    
+    
+    
+  
+   
